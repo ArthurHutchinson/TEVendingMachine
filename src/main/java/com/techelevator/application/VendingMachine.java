@@ -67,13 +67,14 @@ public class VendingMachine implements Money {
             if (choice.equals("1")) {
                 userWallet.updateUserInputMoney($1_DOLLAR, userWallet.getUserInputMoney().get($1_DOLLAR) + 1);
                 System.out.println(userWallet.currentMoneyInput(userWallet.getUserInputMoney()));
+                this.feedMenu();
             } else if (choice.equals("5")) {
                 userWallet.updateUserInputMoney($5_DOLLAR, userWallet.getUserInputMoney().get($5_DOLLAR) + 1);
             } else if (choice.equals("10")) {
                 userWallet.updateUserInputMoney($10_DOLLAR, userWallet.getUserInputMoney().get($10_DOLLAR) + 1);
             } else if (choice.equals("20")) {
                 userWallet.updateUserInputMoney($20_DOLLAR, userWallet.getUserInputMoney().get($20_DOLLAR) + 1);
-            } else if (choice.equals("e")) {
+            } else if (choice.equals("exit")) {
                 // TODO: Either remove the while loop and manually loop it OR fix this else-if statement so it returns back to purchase menu.
                 loop = false;
                 this.purchaseMenu();

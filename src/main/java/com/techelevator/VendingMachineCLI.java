@@ -1,7 +1,7 @@
 package com.techelevator;
 
 
-import com.techelevator.inventory.application.VendingMachine;
+import com.techelevator.application.VendingMachine;
 import com.techelevator.reader.InventoryStocker;
 
 public class VendingMachineCLI {

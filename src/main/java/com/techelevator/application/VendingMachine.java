@@ -1,7 +1,8 @@
-package com.techelevator.inventory.application;
+package com.techelevator.application;
 
 import com.techelevator.inventory.Item;
 import com.techelevator.money.Money;
+import com.techelevator.money.UserWallet;
 import com.techelevator.reader.InventoryStocker;
 import com.techelevator.ui.UserInput;
 import com.techelevator.ui.UserOutput;
@@ -10,14 +11,13 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VendingMachine {
+public class VendingMachine implements Money {
     UserInput userInput = new UserInput();
     UserOutput userOutput = new UserOutput();
-//TODO: Figure out issue of initializing map with values of 0 & getting map to persist between feed money calls
+    UserWallet userWallet = new UserWallet();
+
     private Map<String, Item> inventory;
-    private Map<BigDecimal, Integer> userInputMoney = new HashMap<>();
     public String choice;
-    Money money = new Money();
 
     public VendingMachine(InventoryStocker inventoryStocker){
         inventory = inventoryStocker.getInventory();
@@ -65,21 +65,14 @@ public class VendingMachine {
             userOutput.displayFeedMoneyScreenOptions();
             choice = userInput.getFeedMoneyScreenOption();
             if (choice.equals("1")) {
-                userInputMoney.put(money.get$1_DOLLAR(), 0);
-                userInputMoney.put(money.get$1_DOLLAR(), userInputMoney.get(money.get$1_DOLLAR()) + 1);
-                System.out.println(money.currentMoneyInput(userInputMoney));
+                userWallet.updateUserInputMoney($1_DOLLAR, userWallet.getUserInputMoney().get($1_DOLLAR) + 1);
+                System.out.println(userWallet.currentMoneyInput(userWallet.getUserInputMoney()));
             } else if (choice.equals("5")) {
-                userInputMoney.put(money.get$5_DOLLAR(), 0);
-                userInputMoney.put(money.get$5_DOLLAR(), userInputMoney.get(money.get$5_DOLLAR()) + 1);
-                System.out.println(money.currentMoneyInput(userInputMoney));
+                userWallet.updateUserInputMoney($5_DOLLAR, userWallet.getUserInputMoney().get($5_DOLLAR) + 1);
             } else if (choice.equals("10")) {
-                userInputMoney.put(money.get$10_DOLLAR(), 0);
-                userInputMoney.put(money.get$10_DOLLAR(), userInputMoney.get(money.get$10_DOLLAR()) + 1);
-                System.out.println(money.currentMoneyInput(userInputMoney));
+                userWallet.updateUserInputMoney($10_DOLLAR, userWallet.getUserInputMoney().get($10_DOLLAR) + 1);
             } else if (choice.equals("20")) {
-                userInputMoney.put(money.get$20_DOLLAR(), 0);
-                userInputMoney.put(money.get$20_DOLLAR(), userInputMoney.get(money.get$20_DOLLAR()) + 1);
-                System.out.println(money.currentMoneyInput(userInputMoney));
+                userWallet.updateUserInputMoney($20_DOLLAR, userWallet.getUserInputMoney().get($20_DOLLAR) + 1);
             } else if (choice.equals("e")) {
                 // TODO: Either remove the while loop and manually loop it OR fix this else-if statement so it returns back to purchase menu.
                 loop = false;

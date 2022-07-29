@@ -1,11 +1,15 @@
 package com.techelevator.ui;
 
 import com.techelevator.inventory.Item;
+import com.techelevator.money.Money;
 
 import java.util.Map;
 import java.util.Formatter;
 
 public class UserOutput {
+
+    Money test = new Money();
+
     public void displayMessage(String message) {
         System.out.println();
         System.out.println(message);
@@ -45,7 +49,7 @@ public class UserOutput {
 
         System.out.println();
         //TODO: add in code for displaying actual money
-        System.out.println("Current Money Provided: $$$");
+        System.out.println("Current Money Provided: " + test.getBalance());
     }
 
     public void displayFeedMoneyScreenOptions() {
@@ -63,7 +67,7 @@ public class UserOutput {
 
         System.out.println();
         //TODO: add in code for displaying actual money
-        System.out.println("Current Money Provided: $$$");
+        System.out.println("Current Money Provided: " + test.getBalance());
     }
 
 

@@ -10,12 +10,17 @@ public class Money {
     private final BigDecimal $20_DOLLAR = BigDecimal.valueOf(20.00);
     private final BigDecimal $10_DOLLAR = BigDecimal.valueOf(10.00);
     private final BigDecimal $5_DOLLAR = BigDecimal.valueOf(5.00);
-    private final BigDecimal $1_DOllAR = BigDecimal.valueOf(1.00);
+    private final BigDecimal $1_DOLLAR = BigDecimal.valueOf(1.00);
     private final BigDecimal QUARTER = BigDecimal.valueOf(0.25);
     private final BigDecimal DIME = BigDecimal.valueOf(0.10);
     private final BigDecimal NICKEL = BigDecimal.valueOf(0.05);
 
     Map<BigDecimal,Integer> userInputMoney = new HashMap<>();
+
+    // Constructor
+    public Money() {
+    }
+
 
     //methods
     public BigDecimal currentMoneyInput (Map<BigDecimal,Integer> userInputMoney){
@@ -28,6 +33,10 @@ public class Money {
 
 
     //getBalance
+    //TODO: figure out a way to make this save input values when running program.
+    public BigDecimal getBalance() {
+        return currentMoneyInput(userInputMoney);
+    }
 
     //getters & setters
 
@@ -43,8 +52,8 @@ public class Money {
         return $5_DOLLAR;
     }
 
-    public BigDecimal get$1_DOllAR() {
-        return $1_DOllAR;
+    public BigDecimal get$1_DOLLAR() {
+        return $1_DOLLAR;
     }
 
     public BigDecimal getQUARTER() {

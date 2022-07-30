@@ -18,6 +18,9 @@ public abstract class Item {
     }
 
     //methods
+    public String sillyMessage(){
+        return "";
+    }
 
     //getters & setters
 

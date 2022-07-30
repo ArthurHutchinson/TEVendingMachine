@@ -1,6 +1,7 @@
 package com.techelevator.application;
 
 import com.techelevator.inventory.Item;
+import com.techelevator.inventory.SlotStock;
 import com.techelevator.money.Money;
 import com.techelevator.money.UserWallet;
 import com.techelevator.reader.InventoryStocker;
@@ -18,6 +19,8 @@ public class VendingMachine implements Money {
 
     private Map<String, Item> inventory;
     public String choice;
+
+    SlotStock testingBuild = new SlotStock();
 
     public VendingMachine(InventoryStocker inventoryStocker){
         inventory = inventoryStocker.getInventory();
@@ -42,6 +45,7 @@ public class VendingMachine implements Money {
     }
 
     public void itemDisplayMenu () {
+        testingBuild.buildStartingInventory(inventory);
         UserOutput.displayInventoryItems(inventory);
         this.mainMenu();
     }
@@ -53,9 +57,10 @@ public class VendingMachine implements Money {
             case "feed":
                 this.feedMenu();
             case "select":
-                // Returns user to purchase menu.
+                this.selectMenu();
             case "finish":
                 // Complete transaction and return change.
+                this.finishMenu();
         }
     }
 
@@ -82,59 +87,24 @@ public class VendingMachine implements Money {
         }
     }
 
-//    public void run() {
-//        while(true) {
-//            userOutput.displayHomeScreen();
-//            userOutput.displayHomeScreenOptions();
-//            String choice = userInput.getHomeScreenOption();
-//
-//            System.out.println(choice);
-//            if(choice.equals("display")) {
-//                // display the items
-//                UserOutput.displayInventoryItems(inventory);
-//            }
-//            else if(choice.equals("purchase")) {
-//                // make a purchase
-//                userOutput.displayPurchaseScreenOptions();
-//                choice = userInput.getPurchaseScreenOption();
-//                if(choice.equals("feed")){
-//                    while(true) {
-//                        userOutput.displayFeedMoneyScreenOptions();
-//                        choice = userInput.getFeedMoneyScreenOption();
-//                        if (choice.equals("1")) {
-//                            userInputMoney.put(money.get$1_DOLLAR(), 0);
-//                            userInputMoney.put(money.get$1_DOLLAR(), userInputMoney.get(money.get$1_DOLLAR()) + 1);
-//                            System.out.println(money.currentMoneyInput(userInputMoney));
-//                        } else if (choice.equals("5")) {
-//                            userInputMoney.put(money.get$5_DOLLAR(), 0);
-//                            userInputMoney.put(money.get$5_DOLLAR(), userInputMoney.get(money.get$5_DOLLAR()) + 1);
-//                            System.out.println(money.currentMoneyInput(userInputMoney));
-//                        } else if (choice.equals("10")) {
-//                            userInputMoney.put(money.get$10_DOLLAR(), 0);
-//                            userInputMoney.put(money.get$10_DOLLAR(), userInputMoney.get(money.get$10_DOLLAR()) + 1);
-//                            System.out.println(money.currentMoneyInput(userInputMoney));
-//                        } else if (choice.equals("20")) {
-//                            userInputMoney.put(money.get$20_DOLLAR(), 0);
-//                            userInputMoney.put(money.get$20_DOLLAR(), userInputMoney.get(money.get$20_DOLLAR()) + 1);
-//                            System.out.println(money.currentMoneyInput(userInputMoney));
-//                        } else if (choice.equals("e")) {
-//                            break;
-//                        }
-//                    }
-//                    //can continue feeding
-//                } else if(choice.equals("select")){
-//                    //return user to purchase menu
-//                }else if (choice.equals("finish")){
-//                    //complete transaction & return change
-//                }else {
-//                    break;
-//                }
-//
-//            }
-//            else if(choice.equals("exit")) {
-//                // good bye
-//                break;
-//            }
-//        }
-//    }
+    public void selectMenu() {
+        testingBuild.buildStartingInventory(inventory);
+        UserOutput.displayInventoryItems(inventory);
+        userOutput.displaySelectionMenu();
+        choice = userInput.getSelectMenuOption();
+        for(Map.Entry<String,Item> currentItem : inventory.entrySet()) {
+            if(choice.equals(currentItem.getKey())) {
+                System.out.println("This is a test" + currentItem.getValue().getName());
+                System.out.println(currentItem.getValue().sillyMessage());
+                this.purchaseMenu();
+//            } else {
+//                System.out.println("The selected spot does not exist");
+            }
+        }
+    }
+
+    public void finishMenu(){
+        System.out.println("Finish him!");
+    }
+
 }

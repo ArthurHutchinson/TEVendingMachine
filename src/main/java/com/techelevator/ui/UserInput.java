@@ -1,5 +1,7 @@
 package com.techelevator.ui;
 
+import com.techelevator.reader.InventoryStocker;
+
 import java.util.Scanner;
 
 /**
@@ -60,6 +62,18 @@ public class UserInput {
         } else {
             return "";
         }
+    }
+
+    public String getSelectMenuOption() {
+        String selectedOption = scanner.nextLine();
+        String option = selectedOption.trim();
+        System.out.println("option = " + option);
+
+        return option;
+//        if (option.equals("A1")) {
+//            return "Help";
+//        }
+//        return "HELP ME";
     }
 }
 

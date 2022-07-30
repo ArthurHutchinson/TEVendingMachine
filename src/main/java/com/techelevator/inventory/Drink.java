@@ -8,4 +8,9 @@ public class Drink extends Item{
     public Drink(String name, BigDecimal price, String location) {
         super(name, price, location);
     }
+
+    @Override
+    public String sillyMessage(){
+        return "Drinky, Drinky, Slurp Slurp!";
+    }
 }

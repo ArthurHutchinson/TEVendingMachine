@@ -1,6 +1,7 @@
 package com.techelevator.ui;
 
 import com.techelevator.inventory.Item;
+import com.techelevator.inventory.SlotStock;
 import com.techelevator.money.UserWallet;
 
 import java.util.Map;
@@ -75,15 +76,20 @@ public class UserOutput {
     //TODO: Fix output appearance (tabbing, etc)
 
     public static void displayInventoryItems(Map<String, Item> inventory){
+        SlotStock stockedItemsA = new SlotStock();
         String format1 = "%-20s%s%n";
         String format2 = "%-5s%s%n";
         System.out.println("##############################################");
         System.out.println("Item Location | Item | Price");
         System.out.println("----------------------------------------------");
         for (Map.Entry<String, Item> currentItem : inventory.entrySet()) {
-            System.out.println(currentItem.getKey() + " | " + currentItem.getValue().getName() + " | $" + currentItem.getValue().getPrice());
+            System.out.println(currentItem.getKey() + " | " + currentItem.getValue().getName() + " | $" + currentItem.getValue().getPrice() + " | " + stockedItemsA.getStockItems().get(currentItem.getValue()));
             //System.out.format(format2, currentItem.getKey(), currentItem.getValue().getName(), currentItem.getValue().getPrice());
         }
         System.out.println("##############################################");
+    }
+
+    public void displaySelectionMenu() {
+        System.out.println("Please type in the slot identifier (Example - A1): ");
     }
 }

@@ -10,4 +10,10 @@ public class Candy extends Item{
         super(name, price, location);
     }
 
+    //methods
+    @Override
+    public String sillyMessage(){
+        return "Sugar, Sugar, so Sweet!";
+    }
+
 }

@@ -8,4 +8,10 @@ public class Gum extends Item{
     public Gum(String name, BigDecimal price, String location) {
         super(name, price, location);
     }
+
+    //methods
+    @Override
+    public String sillyMessage(){
+        return "Chewy, Chewy, Lots O Bubbles!";
+    }
 }

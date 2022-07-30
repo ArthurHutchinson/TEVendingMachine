@@ -4,6 +4,7 @@ import com.techelevator.inventory.Item;
 import com.techelevator.reader.InventoryStocker;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SlotStock {
@@ -11,20 +12,22 @@ public class SlotStock {
     // Member Variables
 
     private int availableItems = 6;
-    Map<String, Integer> inventory = new HashMap<>();
-    InventoryStocker test = new InventoryStocker();
+    //<location of item, count of item>
+    static Map<Item, Integer> stockedInventory = new LinkedHashMap<>();
+//    InventoryStocker test = new InventoryStocker();
 
     // Constructor
     public SlotStock() {
     }
 
     // Methods
-    public void getAvailableInventory(Map<String, Item> inventory) {
+    //<location, item object>
+    public Map<Item, Integer> buildStartingInventory(Map<String, Item> inventory) {
         //TODO: Set this up:
-        //         for (Map.Entry<String, Item> currentItem : inventory.entrySet()) {
-        // Could help who knows.
-
-
+       for (Map.Entry<String, Item> currentItem : inventory.entrySet()) {
+           stockedInventory.put(currentItem.getValue(), availableItems);
+       }
+       return stockedInventory;
     }
 
     // Getter & Setters
@@ -37,12 +40,12 @@ public class SlotStock {
         this.availableItems = availableItems;
     }
 
-    public Map<String, Integer> getStockItems() {
-        return inventory;
+    public Map<Item, Integer> getStockItems() {
+        return stockedInventory;
     }
 
-    public void setStockItems(Map<String, Integer> stockItems) {
-        this.inventory = inventory;
+    public void setStockItems(Map<Item, Integer> stockItems) {
+        this.stockedInventory = stockItems;
     }
 
     // Derived

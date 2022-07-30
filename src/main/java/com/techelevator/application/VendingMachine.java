@@ -43,6 +43,8 @@ public class VendingMachine implements Money {
             case "exit":
                 System.out.println("Thanks for shopping!");
                 System.exit(0);
+            case "":
+                this.mainMenu();
         }
     }
 
@@ -61,6 +63,8 @@ public class VendingMachine implements Money {
                 this.selectMenu();
             case "finish":
                 this.finishMenu();
+            case "":
+                this.purchaseMenu();
         }
     }
 

@@ -4,8 +4,8 @@ Code to Refactor:
 -Should move output text to UserOutput
 -Change AuditTracker methods to use actual amounts from other methods for all cases
 -Fix/change output formatting for menus, displays, & audit file
+-Could create a money super class and all types of money subclass from that (then refactor other code to use those)
 
 Other notes:
--test other .csv
 -display should show "NO LONGER AVAILABLE" if quantity == 0
 -make unit tests

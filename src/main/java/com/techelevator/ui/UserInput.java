@@ -15,7 +15,7 @@ public class UserInput {
 
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toLowerCase();
-        System.out.println("option = " + option);
+        //System.out.println("option = " + option);
         if (option.equals("d")) {
             return "display";
         } else if (option.equals("p")) {
@@ -31,7 +31,7 @@ public class UserInput {
 
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toLowerCase();
-        System.out.println("option = " + option);
+        //System.out.println("option = " + option);
         if (option.equals("m")) {
             return "feed";
         } else if (option.equals("s")) {
@@ -47,7 +47,7 @@ public class UserInput {
 
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toLowerCase();
-        System.out.println("option = " + option);
+        //System.out.println("option = " + option);
         if (option.equals("1")) {
             return "1";
         } else if (option.equals("5")) {
@@ -66,7 +66,7 @@ public class UserInput {
     public String getSelectMenuOption() {
         String selectedOption = scanner.nextLine();
         String option = selectedOption.trim().toUpperCase(Locale.ROOT);
-        System.out.println("option = " + option);
+        //System.out.println("option = " + option);
 
         return option;
 

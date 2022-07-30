@@ -1,8 +1,6 @@
 package com.techelevator.reader;
 
-import com.techelevator.inventory.Candy;
-import com.techelevator.inventory.Item;
-import com.techelevator.inventory.Munchy;
+import com.techelevator.inventory.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,9 +31,9 @@ public class InventoryStocker {
                 } else if (inventoryItem[3].equals("Candy")) {
                     item = new Candy(inventoryItem[1], BigDecimal.valueOf(Double.parseDouble(inventoryItem[2])), inventoryItem[0]);
                 } else if (inventoryItem[3].equals("Drink")) {
-                    item = new Candy(inventoryItem[1], BigDecimal.valueOf(Double.parseDouble(inventoryItem[2])), inventoryItem[0]);
+                    item = new Drink(inventoryItem[1], BigDecimal.valueOf(Double.parseDouble(inventoryItem[2])), inventoryItem[0]);
                 } else if (inventoryItem[3].equals("Gum")) {
-                    item = new Candy(inventoryItem[1], BigDecimal.valueOf(Double.parseDouble(inventoryItem[2])), inventoryItem[0]);
+                    item = new Gum(inventoryItem[1], BigDecimal.valueOf(Double.parseDouble(inventoryItem[2])), inventoryItem[0]);
                 }
                 inventory.put(item.getLocation(), item);
             }

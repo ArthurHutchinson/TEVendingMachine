@@ -5,11 +5,11 @@ import java.math.BigDecimal;
 public interface Money {
 
     //member variables
-    final BigDecimal $20_DOLLAR = BigDecimal.valueOf(20.00);
-    final BigDecimal $10_DOLLAR = BigDecimal.valueOf(10.00);
-    final BigDecimal $5_DOLLAR = BigDecimal.valueOf(5.00);
-    final BigDecimal $1_DOLLAR = BigDecimal.valueOf(1.00);
-    final BigDecimal QUARTER = BigDecimal.valueOf(0.25);
-    final BigDecimal DIME = BigDecimal.valueOf(0.10);
-    final BigDecimal NICKEL = BigDecimal.valueOf(0.05);
+    BigDecimal $20_DOLLAR = new BigDecimal(20.00);
+    BigDecimal $10_DOLLAR = new BigDecimal(10.00);
+    BigDecimal $5_DOLLAR = new BigDecimal(5.00);
+    BigDecimal $1_DOLLAR = new BigDecimal(1.00);
+    BigDecimal QUARTER = new BigDecimal(0.25);
+    BigDecimal DIME = new BigDecimal(0.10);
+    BigDecimal NICKEL = new BigDecimal(0.05);
 }

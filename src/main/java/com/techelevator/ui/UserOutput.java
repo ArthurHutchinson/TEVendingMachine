@@ -8,14 +8,6 @@ import java.util.Map;
 
 public class UserOutput {
 
-    UserWallet userWallet = new UserWallet();
-
-    public void displayMessage(String message) {
-        System.out.println();
-        System.out.println(message);
-        System.out.println();
-    }
-
     public void displayHomeScreen() {
         System.out.println();
         System.out.println("***************************************************");
@@ -28,7 +20,7 @@ public class UserOutput {
         System.out.println("What would you like to do?");
         System.out.println();
 
-        System.out.println("D) Display Items");
+        System.out.println("D) Display Vending Items");
         System.out.println("P) Purchase");
         System.out.println("E) Exit");
 
@@ -45,11 +37,10 @@ public class UserOutput {
         System.out.println("F) Finish Transaction");
 
         System.out.println();
-        System.out.print("Please select an option: ");
+        System.out.println("Current Money Provided: " + UserWallet.getUserMoney());
 
         System.out.println();
-        //TODO: add in code for displaying actual money
-        System.out.println("Current Money Provided: " + userWallet.getBalance());
+        System.out.print("Please select an option: ");
     }
 
     public void displayFeedMoneyScreenOptions() {
@@ -63,28 +54,20 @@ public class UserOutput {
         System.out.println("E)  Exit");
 
         System.out.println();
-        System.out.print("Please select an option: ");
+        System.out.println("Current Money Provided: " + UserWallet.getUserMoney());
 
         System.out.println();
-        //TODO: add in code for displaying actual money
-        System.out.println("Current Money Provided: " + userWallet.getBalance());
+        System.out.print("Please select an option: ");
     }
 
-
-
     //method to display inventory
-    //TODO: Fix output appearance (tabbing, etc)
-
-    public static void displayInventoryItems(Map<String, Item> inventory){
+    public static void displayInventoryItems(Map<String, Item> inventory) {
         SlotStock stockedItemsA = new SlotStock();
-        String format1 = "%-20s%s%n";
-        String format2 = "%-5s%s%n";
         System.out.println("##############################################");
-        System.out.println("Item Location | Item | Price");
+        System.out.println("Item Location | Item | Price | Quantity");
         System.out.println("----------------------------------------------");
         for (Map.Entry<String, Item> currentItem : inventory.entrySet()) {
             System.out.println(currentItem.getKey() + " | " + currentItem.getValue().getName() + " | $" + currentItem.getValue().getPrice() + " | " + stockedItemsA.getStockItems().get(currentItem.getValue()));
-            //System.out.format(format2, currentItem.getKey(), currentItem.getValue().getName(), currentItem.getValue().getPrice());
         }
         System.out.println("##############################################");
     }

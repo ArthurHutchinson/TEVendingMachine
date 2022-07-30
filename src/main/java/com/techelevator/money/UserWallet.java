@@ -1,40 +1,38 @@
 package com.techelevator.money;
 
+import com.techelevator.inventory.Item;
+
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
 
-public class UserWallet implements Money{
+public class UserWallet implements Money {
 
-    private static Map<BigDecimal,Integer> userInputMoney = new HashMap<>();
-
-    public UserWallet(){
-        userInputMoney.put($1_DOLLAR, 0);
-        userInputMoney.put($5_DOLLAR, 0);
-        userInputMoney.put($10_DOLLAR, 0);
-        userInputMoney.put($20_DOLLAR, 0);
-    }
+    //member variables
+    private static BigDecimal userMoney = new BigDecimal("0.00");
 
     //methods
-    public static BigDecimal currentMoneyInput (Map<BigDecimal,Integer> userInputMoney){
-        BigDecimal currentUserTotal = BigDecimal.valueOf(0.00);
-        for(Map.Entry<BigDecimal,Integer> currentBill : userInputMoney.entrySet()){
-            currentUserTotal = currentUserTotal.add(currentBill.getKey().multiply(BigDecimal.valueOf(currentBill.getValue())));
+    public static void addToUserMoney(String amountToAdd) {
+        if (amountToAdd.equals("1")) {
+            userMoney = userMoney.add($1_DOLLAR);
+        } else if (amountToAdd.equals("5")) {
+            userMoney = userMoney.add($5_DOLLAR);
+        } else if (amountToAdd.equals("10")) {
+            userMoney = userMoney.add($10_DOLLAR);
+        } else if (amountToAdd.equals("20")) {
+            userMoney = userMoney.add($20_DOLLAR);
         }
-        return currentUserTotal;
     }
 
-    public static void updateUserInputMoney(BigDecimal userBill, Integer numberOfBills){
-        userInputMoney.put(userBill, numberOfBills);
-    }
-
-    public static BigDecimal getBalance() {
-        return currentMoneyInput(userInputMoney);
+    public static void purchaseFromUserMoney(Item item) {
+        userMoney = userMoney.subtract(item.getPrice());
     }
 
     //getters & setters
-    public static Map<BigDecimal, Integer> getUserInputMoney() {
-        return userInputMoney;
+    public static BigDecimal getUserMoney() {
+        return userMoney;
+    }
+
+    public static void setUserMoney(BigDecimal userMoney) {
+        UserWallet.userMoney = userMoney;
     }
 
 }

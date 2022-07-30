@@ -2,7 +2,7 @@ package com.techelevator.inventory;
 
 import java.math.BigDecimal;
 
-public class Gum extends Item{
+public class Gum extends Item {
 
     //constructor
     public Gum(String name, BigDecimal price, String location) {
@@ -11,7 +11,7 @@ public class Gum extends Item{
 
     //methods
     @Override
-    public String sillyMessage(){
+    public String sillyMessage() {
         return "Chewy, Chewy, Lots O Bubbles!";
     }
 }

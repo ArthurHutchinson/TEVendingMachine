@@ -1,12 +1,11 @@
 package com.techelevator.ui;
 
-import com.techelevator.reader.InventoryStocker;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
  * Responsibilities: This class should handle receiving ALL input from the User
- *
  * Dependencies: None
  */
 public class UserInput {
@@ -66,14 +65,10 @@ public class UserInput {
 
     public String getSelectMenuOption() {
         String selectedOption = scanner.nextLine();
-        String option = selectedOption.trim();
+        String option = selectedOption.trim().toUpperCase(Locale.ROOT);
         System.out.println("option = " + option);
 
         return option;
-//        if (option.equals("A1")) {
-//            return "Help";
-//        }
-//        return "HELP ME";
+
     }
 }
-

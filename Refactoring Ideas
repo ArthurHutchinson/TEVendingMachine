@@ -1,0 +1,11 @@
+Code to Refactor:
+
+-Should Items have a "location"?
+-Should move output text to UserOutput
+-Change AuditTracker methods to use actual amounts from other methods for all cases
+-Fix/change output formatting for menus, displays, & audit file
+
+Other notes:
+-test other .csv
+-display should show "NO LONGER AVAILABLE" if quantity == 0
+-make unit tests

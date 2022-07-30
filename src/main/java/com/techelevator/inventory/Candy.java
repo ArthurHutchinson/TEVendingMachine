@@ -2,8 +2,7 @@ package com.techelevator.inventory;
 
 import java.math.BigDecimal;
 
-public class Candy extends Item{
-
+public class Candy extends Item {
 
     //constructor
     public Candy(String name, BigDecimal price, String location) {
@@ -12,7 +11,7 @@ public class Candy extends Item{
 
     //methods
     @Override
-    public String sillyMessage(){
+    public String sillyMessage() {
         return "Sugar, Sugar, so Sweet!";
     }
 

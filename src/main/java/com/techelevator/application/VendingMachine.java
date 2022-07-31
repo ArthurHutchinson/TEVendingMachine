@@ -41,7 +41,7 @@ public class VendingMachine implements Money {
             case "purchase":
                 this.purchaseMenu();
             case "exit":
-                System.out.println("Thanks for shopping!");
+                userOutput.exitMessage();
                 System.exit(0);
             case "":
                 this.mainMenu();
@@ -79,7 +79,7 @@ public class VendingMachine implements Money {
         } else if (choice.equals("exit")) {
             this.purchaseMenu();
         } else {
-            System.out.println("Please enter a valid bill type.");
+            userOutput.enterValidBill();
             this.feedMenu();
         }
     }
@@ -91,35 +91,34 @@ public class VendingMachine implements Money {
         Item selectedItem = inventory.get(choice);
         if (inventory.containsKey(choice)) {
             if (slotStocker.amountInStock(selectedItem) > 0 && UserWallet.getUserMoney().compareTo(selectedItem.getPrice()) >= 0) {
-                System.out.println("Dispensing item: " + selectedItem.getName());
                 slotStocker.updateInventoryStock(selectedItem);
-                System.out.println("Price: $ " + selectedItem.getPrice());
                 auditTracker.purchaseItemAudit(selectedItem);
                 UserWallet.purchaseFromUserMoney(selectedItem);
-                System.out.println("Money remaining: $" + UserWallet.getUserMoney());
-                System.out.println(selectedItem.sillyMessage());
+                userOutput.displayItemDispensingMessage(selectedItem);
                 this.purchaseMenu();
             } else if (slotStocker.amountInStock(selectedItem) <= 0) {
-                System.out.println("This item is NO LONGER AVAILABLE.");
+                userOutput.itemNotAvailable();
                 this.purchaseMenu();
             } else if (UserWallet.getUserMoney().compareTo(selectedItem.getPrice()) < 0) {
-                System.out.println("Please insert additional money.");
+                userOutput.insertAdditionalMoney();
                 this.purchaseMenu();
             }
 
         } else {
-            System.out.println("The selected spot does not exist");
+            userOutput.slotDoesNotExist();
             this.purchaseMenu();
         }
     }
 
     public void finishMenu() {
-        System.out.println("Thanks for shopping! Here is your change!");
         ChangeMachine changeMachine = new ChangeMachine();
         auditTracker.changeGivenAudit();
         changeMachine.makeChange(UserWallet.getUserMoney());
-        System.out.println("Returning change: " + changeMachine.getCountOfDollars() + " $1(s), " + changeMachine.getCountOfQuarters() + " quarter(s), " + changeMachine.getCountOfDimes() + " dime(s), " + changeMachine.getCountOfNickels() + " nickel(s).");
+        userOutput.dispenseChangeMessage(changeMachine.getCountOfDollars(), changeMachine.getCountOfQuarters(), changeMachine.getCountOfDimes(), changeMachine.getCountOfNickels());
         this.mainMenu();
     }
+
+
+
 
 }

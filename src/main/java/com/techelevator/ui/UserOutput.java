@@ -37,7 +37,7 @@ public class UserOutput {
         System.out.println("F) Finish Transaction");
 
         System.out.println();
-        System.out.println("Current Money Provided: " + UserWallet.getUserMoney());
+        System.out.println("Current Money Provided: $" + UserWallet.getUserMoney());
 
         System.out.println();
         System.out.print("Please select an option: ");
@@ -54,7 +54,7 @@ public class UserOutput {
         System.out.println("E)  Exit");
 
         System.out.println();
-        System.out.println("Current Money Provided: " + UserWallet.getUserMoney());
+        System.out.println("Current Money Provided: $" + UserWallet.getUserMoney());
 
         System.out.println();
         System.out.print("Please select an option: ");
@@ -67,12 +67,53 @@ public class UserOutput {
         System.out.println("Item Location | Item | Price | Quantity");
         System.out.println("----------------------------------------------");
         for (Map.Entry<String, Item> currentItem : inventory.entrySet()) {
+            if(stockedItemsA.getStockItems().get(currentItem.getValue()) > 0){
             System.out.println(currentItem.getKey() + " | " + currentItem.getValue().getName() + " | $" + currentItem.getValue().getPrice() + " | " + stockedItemsA.getStockItems().get(currentItem.getValue()));
-        }
+
+        } else {
+                System.out.println(currentItem.getKey() + " | " + currentItem.getValue().getName() + " | $" + currentItem.getValue().getPrice() + " | " + "NO LONGER AVAILABLE");
+            }
+            }
         System.out.println("##############################################");
     }
 
     public void displaySelectionMenu() {
         System.out.println("Please type in the slot identifier (Example - A1): ");
     }
+
+    public void displayItemDispensingMessage(Item selectedItem){
+        System.out.println("Dispensing item: " + selectedItem.getName());
+        System.out.println("Price: $ " + selectedItem.getPrice());
+        System.out.println("Money remaining: $" + UserWallet.getUserMoney());
+        System.out.println(selectedItem.sillyMessage());
+
+    }
+
+    public void itemNotAvailable(){
+        System.out.println("This item is NO LONGER AVAILABLE.");
+    }
+
+
+    public void insertAdditionalMoney(){
+        System.out.println("Please insert additional money.");
+    }
+
+    public void slotDoesNotExist(){
+        System.out.println("The selected spot does not exist.");
+    }
+
+    public void enterValidBill(){
+        System.out.println("Please enter a valid bill type.");
+    }
+
+    public void dispenseChangeMessage(int dollars, int quarters, int dimes, int nickels){
+        System.out.println("Thanks for shopping! Here is your change!");
+        System.out.println("Returning change: " + dollars + " $1(s), " + quarters + " quarter(s), " + dimes + " dime(s), " + nickels + " nickel(s).");
+    }
+
+    public void exitMessage(){
+        System.out.println("Thanks for shopping with Taste Elevator!");
+    }
+
+
 }
